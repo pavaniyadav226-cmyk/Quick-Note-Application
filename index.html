@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quick Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <main>
-    <h1>Quick Notes</h1>
+    <header>
+      <h1>Notes</h1>
+      <p id="count">0 notes</p>
+    </header>
 
     <form id="note-form">
       <label for="note-input" class="sr-only">New note</label>
-      <textarea id="note-input" rows="4" maxlength="5000" placeholder="Write a note…" required></textarea>
+      <textarea id="note-input" rows="3" maxlength="5000" placeholder="What's on your mind?" required></textarea>
       <div class="form-row">
         <span id="counter">0 / 5000</span>
         <button type="submit" id="save-btn">Save note</button>
@@ -22,7 +28,7 @@
 
     <section aria-live="polite">
       <ul id="notes"></ul>
-      <p id="empty" hidden>No notes yet. Write one above and save it.</p>
+      <p id="empty" hidden>Nothing here yet. Write your first note above.</p>
     </section>
   </main>
   <script src="/static/app.js"></script>
