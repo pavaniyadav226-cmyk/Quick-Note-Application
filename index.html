@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick Notes</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <h1>Quick Notes</h1>
+
+    <form id="note-form">
+      <label for="note-input" class="sr-only">New note</label>
+      <textarea id="note-input" rows="4" maxlength="5000" placeholder="Write a note…" required></textarea>
+      <div class="form-row">
+        <span id="counter">0 / 5000</span>
+        <button type="submit" id="save-btn">Save note</button>
+      </div>
+      <p id="error" role="alert" hidden></p>
+    </form>
+
+    <section aria-live="polite">
+      <ul id="notes"></ul>
+      <p id="empty" hidden>No notes yet. Write one above and save it.</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
