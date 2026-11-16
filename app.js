@@ -22,7 +22,8 @@ async function api(path, options) {
 function renderNote(note) {
   const li = document.createElement("li");
   li.dataset.id = note.id;
-
+    li.className = "c" + (note.id % 5);
+  li.style.setProperty("--tilt", (((note.id * 7) % 5) - 2) * 0.6 + "deg");
   const text = document.createElement("p");
   text.className = "note-text";
   text.textContent = note.content; // textContent, never innerHTML: prevents XSS
@@ -46,7 +47,9 @@ function renderNote(note) {
 }
 
 function updateEmpty() {
-  emptyEl.hidden = listEl.children.length > 0;
+  const n = listEl.children.length;
+  emptyEl.hidden = n > 0;
+  document.getElementById("count").textContent = n + (n === 1 ? " note" : " notes");
 }
 
 async function loadNotes() {
@@ -86,7 +89,9 @@ form.addEventListener("submit", async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content }),
     });
-    listEl.prepend(renderNote(note));
+        const el = renderNote(note);
+    el.classList.add("pop");
+    listEl.prepend(el);
     input.value = "";
     counterEl.textContent = `0 / ${input.maxLength}`;
     updateEmpty();
